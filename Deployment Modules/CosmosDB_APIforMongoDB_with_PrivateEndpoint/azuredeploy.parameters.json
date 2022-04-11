@@ -1,0 +1,118 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "networkSecurityGroupName": {
+      "value": "prod-nsg"
+    },
+    "networkSecurityGroupRules": {
+      "value": [
+        {
+          "name": "SSH",
+          "properties": {
+            "priority": 300,
+            "protocol": "TCP",
+            "access": "Allow",
+            "direction": "Inbound",
+            "sourceAddressPrefix": "*",
+            "sourcePortRange": "*",
+            "destinationAddressPrefix": "*",
+            "destinationPortRange": "22"
+          }
+        }
+      ]
+    },
+    "addressPrefixes": {
+      "value": [
+        "10.4.0.0/16"
+      ]
+    },
+    "networkSecurityGroupRulesPrivate": {
+      "value": [
+        {
+          "name": "SSH",
+          "properties": {
+            "priority": 300,
+            "protocol": "TCP",
+            "access": "Allow",
+            "direction": "Inbound",
+            "sourceAddressPrefix": "*",
+            "sourcePortRange": "*",
+            "destinationAddressPrefix": "*",
+            "destinationPortRange": "22"
+          }
+        },
+        {
+          "name": "Http",
+          "properties": {
+            "priority": 302,
+            "protocol": "TCP",
+            "access": "Allow",
+            "direction": "Inbound",
+            "sourceAddressPrefix": "*",
+            "sourcePortRange": "*",
+            "destinationAddressPrefix": "*",
+            "destinationPortRange": "80"
+          }
+        },
+        {
+          "name": "Https",
+          "properties": {
+            "priority": 304,
+            "protocol": "TCP",
+            "access": "Allow",
+            "direction": "Inbound",
+            "sourceAddressPrefix": "*",
+            "sourcePortRange": "*",
+            "destinationAddressPrefix": "*",
+            "destinationPortRange": "443"
+          }
+        },
+        {
+          "name": "MongoPort",
+          "properties": {
+            "priority": 305,
+            "protocol": "TCP",
+            "access": "Allow",
+            "direction": "Inbound",
+            "sourceAddressPrefix": "*",
+            "sourcePortRange": "*",
+            "destinationAddressPrefix": "*",
+            "destinationPortRange": "27018"
+          }
+        }
+      ]
+    },
+
+    "rgLocation": {
+      "value": "eastus"
+    },
+    "defaultExperience_db": {
+      "value": "Azure Cosmos DB for MongoDB API"
+    },
+    "name": {
+      "value": "group"
+    },
+    "environment": {
+      "value": "dev"
+    },
+    "publicNetworkAccess": {
+      "value": "Disabled"
+    },
+    "private-subnet-ip-prefix": {
+      "value": "10.4.10.0/24"
+    },
+    "bastion-subnet-ip-prefix": {
+      "value": "10.4.1.0/26"
+    },
+    "publicIpAddressSku": {
+      "value": "standard"
+    },
+    "basitonDNSName": {
+      "value": "group-bastion765343"
+    },
+    "publicIpAddressType": {
+      "value": "static"
+    }
+  }
+}
